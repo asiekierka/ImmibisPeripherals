@@ -1,0 +1,15 @@
+tile.immibis_peripherals.rfidwriter.name=RFID Writer
+tile.immibis_peripherals.rfidreader.name=RFID Reader
+tile.immibis_peripherals.magreader.name=Mag-card Reader
+tile.immibis_peripherals.speaker.name=Speaker
+tile.immibis_peripherals.nic.name=LAN Modem
+tile.immibis_peripherals.crypto.name=Cryptographic Accelerator
+tile.immibis_peripherals.ami.name=Adventure Map Interface
+
+item.immibis_peripherals.cable.0.name=LAN Cable
+
+item.immibis_peripherals.rf.name=RFID card
+item.immibis_peripherals.mc.name=Mag-stripe card
+item.immibis_peripherals.core.name=Microprocessor Core
+item.immibis_peripherals.corex8.name=Microprocessor Core x 8
+item.immibis_peripherals.corex64.name=Microprocessor Core x 64

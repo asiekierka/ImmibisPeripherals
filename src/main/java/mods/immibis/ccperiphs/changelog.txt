@@ -1,0 +1,151 @@
+57.0.2:
+* Fixed microprocessor core recipe (the one where you smelt computers)
+
+57.0.1:
+* Fixed missing 0's in cryptographic accelerator hashes.
+* Fixed name of LAN cable.
+
+57.0.0:
+* Updated to Minecraft 1.6.4.
+
+56.0.1:
+* Fixed crash on startup on servers.
+
+56.0.0:
+* Updated to Minecraft 1.6.2.
+
+55.0.4:
+* Fixed crash when right-clicking a mag-card peripheral.
+
+55.0.3:
+* Added peripheral side/name to mag_write_done and mag_swipe events.
+* Added old data to mag_write_done event.
+* Added distance to rfid_detected event.
+* RFID readers can scan with a higher-than-default radius, up to 16 blocks;
+  however they will not return any data for cards farther than that.
+  They will still queue a rfid_detected event allowing you to see the existence of the card.
+* Halved the default time it takes to scan for RFID cards, and made it configurable. 
+
+55.0.2:
+* Removed all left-over references to ModLoader.
+
+55.0.1:
+* Now uses SRG names.
+
+55.0.0:
+* Updated to Minecraft 1.5.2. (Before CC itself :O)
+
+54.0.0:
+* Fixed getMetadata.
+* Speakers throw errors instead of returning them.
+* Updated to Minecraft 1.5.1.
+
+53.0.3:
+* Solid sides of blocks are now actually solid, so you can put CC modems on them.
+
+53.0.2:
+* Fixed previous update.
+
+53.0.1:
+* Adventure map interface will not be available in creative mode if it's disabled.
+
+53.0.0:
+* Updated to Minecraft 1.5.
+* Second parameter to rfid_detected event is the distance from the centre of the reader.
+* Fixed adventure map interfaces and cryptographic coprocessors forgetting their direction when saved.
+* New bug: Speakers can flash darker and lighter.
+
+52.1.2:
+* Added advmap.getRegisteredWorlds()
+* LAN modem light turns off when not connected to a computer.
+* Twisted pair cable renamed to LAN cable (for simplicity and consistency).
+
+52.1.1:
+* Fixed setHunger and setFoodSaturation in SMP.
+
+52.1.0:
+* Added cryptographic accelerator.
+* Added adventure map interface. Uncraftable.
+  Must be enabled in config or it won't do anything - enabled by default in SSP only. 
+* Fixed setInsertCardLight not causing render updates.
+
+52.0.8:
+* Fixed both cards not appearing in the creative menu.
+
+52.0.7:
+* Fixed modem side in lan_message events.
+
+52.0.5:
+* Fixed card icon and label.
+
+52.0.4:
+* Recompiled with Java 6.
+
+52.0.3:
+* Fixed packaging again.
+
+52.0.2:
+* Fixed mcmod.info
+
+52.0.1:
+* Fixed packaging.
+* Updated CC API.
+
+52.0.0:
+* Updated to 1.4.6.
+
+51.1.1:
+* Fixed crash in setTexture.
+
+51.1.0:
+* Moved all blocks to the ComputerCraft creative mode tab.
+* Added LAN modems and twisted-pair cable.
+* Fixed shadowing on blocks in inventories.
+
+51.0.2:
+* LineUnavailableExceptions now print a stack trace and warning to the console instead of crashing the game.
+
+51.0.1:
+* Fixed things.
+
+51.0.0:
+* Updated to 1.4.5.
+* Ended support for 1.2.5, 1.3.2 and 1.4.2.
+
+50.2.0:
+* Added speakers.
+* Fixed rendering of dropped item-stacks of >1 item.
+* Fixed darkened rendering of part of the RFID writer as an item.
+* Added config options for all recipes, in case server admins want to only use part of the mod.
+
+50.1.2:
+* Fixed crashing on startup.
+
+50.1.1:
+* Removed tape drives.
+
+50.1.0:
+* Updated to 1.4.2
+
+50.0.3:
+* Fixed card labels not being visible.
+
+50.0.2:
+* Fixed syncing being broken in SMP. (requires Immibis Core update)
+
+50.0.0pr1:
+* Updated to 1.3.2
+
+49.0.3:
+* Admin password added for RFID writers.
+* RFID readers can read cards inside storage carts.
+
+49.0.2:
+* Attempted fix for Railcraft crash.
+
+49.0.1:
+* Fixed crash when selecting the mod in the mods list.
+* Added optional range parameter to reader.scan
+
+49.0.0:
+* Initial release

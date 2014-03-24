@@ -1,0 +1,18 @@
+"Normal" twisted pair cable:
+	Send messages at one end, receive at other end.
+	Voluntary VLAN capability - messages on one VLAN not received by others.
+	Also connect to peripherals.
+	Promiscuous mode - allows a NIC to receive peripheral messages.
+
+Fibre-optic cable:
+	Acts as 16 cables in one - one per Minecraft colour.
+	Cannot be split?
+
+Inter-dimensional wiring via nether/end portals
+
+Channels
+	128 channels, numbered 1 to 128.
+	Modems can listen on any combination of channels.
+	Channels 0 and below correspond to computer IDs.
+	Messages sent on channel -N will only be received by computer N and computers in promiscuous mode.
+	Modems in promiscuous mode will receive all messages on channels 0 and below, but must still be manually added to channels 1-128.
