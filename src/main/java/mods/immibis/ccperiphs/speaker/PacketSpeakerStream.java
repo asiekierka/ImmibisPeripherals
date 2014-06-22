@@ -22,24 +22,24 @@ public class PacketSpeakerStream implements IPacket {
 	public byte[] data;
 	
 	@Override
-	public void read(ByteBuf in) throws IOException {
+	public void read(DataInputStream in) throws IOException {
 		x = in.readInt();
 		y = in.readInt();
 		z = in.readInt();
 		dimension = in.readInt();
 		int len = in.readInt();
 		data = new byte[len];
-		in.readBytes(data);
+		in.read(data);
 	}
 
 	@Override
-	public void write(ByteBuf out) throws IOException {
+	public void write(DataOutputStream out) throws IOException {
 		out.writeInt(x);
 		out.writeInt(y);
 		out.writeInt(z);
 		out.writeInt(dimension);
 		out.writeInt(data.length);
-		out.writeBytes(data);
+		out.write(data);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -49,5 +49,15 @@ public class PacketSpeakerStream implements IPacket {
 			return; // can't receive on server
 		
 		ClientSpeaker.stream(x, y, z, dimension, data);
+	}
+
+	@Override
+	public byte getID() {
+		return ImmibisPeripherals.PKT_SPEAKER_STREAM;
+	}
+
+	@Override
+	public String getChannel() {
+		return ImmibisPeripherals.CHANNEL;
 	}
 }

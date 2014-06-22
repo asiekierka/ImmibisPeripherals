@@ -26,7 +26,7 @@ public class PacketSpeakerStart implements IPacket {
 	public int[] serverFreqs;
 	
 	@Override
-	public void read(ByteBuf in) throws IOException {
+	public void read(DataInputStream in) throws IOException {
 		x = in.readInt();
 		y = in.readInt();
 		z = in.readInt();
@@ -47,7 +47,7 @@ public class PacketSpeakerStart implements IPacket {
 	}
 
 	@Override
-	public void write(ByteBuf out) throws IOException {
+	public void write(DataOutputStream out) throws IOException {
 		out.writeInt(x);
 		out.writeInt(y);
 		out.writeInt(z);
@@ -77,5 +77,15 @@ public class PacketSpeakerStart implements IPacket {
 				if(serverFreqs[k] != 0)
 					cs.startChannel(k, serverFreqs[k]);
 		}
+	}
+
+	@Override
+	public byte getID() {
+		return 1;
+	}
+
+	@Override
+	public String getChannel() {
+		return "imm_per";
 	}
 }

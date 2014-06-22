@@ -186,6 +186,11 @@ public class BlockPeriphs extends BlockCombined {
 	public int getRenderType() {
 		return model;
 	}
+	
+	@Override
+	public TileEntity createNewTileEntity(World world, int data) {
+		return getBlockEntity(data);
+	}
 
 	@Override
 	public TileEntity getBlockEntity(int data) {

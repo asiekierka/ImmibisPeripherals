@@ -113,7 +113,6 @@ public class ForthContext {
 		return code[rstack[rstack_pos]++];
 	}
 	
-	@SuppressWarnings("unused")
 	private void disassemble() {
 		Map<Integer, String> words = new HashMap<Integer, String>();
 		for(String s : BASE_DICT.getAllWords()) words.put(0xC000 | (BASE_DICT.getId(s)), s);
