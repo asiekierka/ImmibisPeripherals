@@ -15,7 +15,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.AABBPool;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
@@ -82,23 +81,21 @@ public class BlockLANWire extends Block {
 		
 		final double min = 6/16f, max=10/16f;
 		
-		AABBPool pool = AxisAlignedBB.getAABBPool();
-		
 		if(!nx && !ny && !nz && !px && !py && !pz) {
-			addBB(mask,list,x,y,z, pool.getAABB(min, min, min, max, max, max));
+			addBB(mask,list,x,y,z, AxisAlignedBB.getBoundingBox(min, min, min, max, max, max));
 			return;
 		}
 		
 		if(nx || px) {
-			addBB(mask,list,x,y,z, pool.getAABB(nx?0:min, min, min, px?1:max, max, max));
+			addBB(mask,list,x,y,z, AxisAlignedBB.getBoundingBox(nx?0:min, min, min, px?1:max, max, max));
 		}
 		
 		if(ny || py) {
-			addBB(mask,list,x,y,z, pool.getAABB(min, ny?0:min, min, max, py?1:max, max));
+			addBB(mask,list,x,y,z, AxisAlignedBB.getBoundingBox(min, ny?0:min, min, max, py?1:max, max));
 		}
 		
 		if(nz || pz) {
-			addBB(mask,list,x,y,z, pool.getAABB(min, min, nz?0:min, max, max, pz?1:max));
+			addBB(mask,list,x,y,z, AxisAlignedBB.getBoundingBox(min, min, nz?0:min, max, max, pz?1:max));
 		}
 	}
 	
@@ -115,8 +112,7 @@ public class BlockLANWire extends Block {
 		double z1 = BlockLANWire.connects(w, x,y,z-1,meta) ? 0 : min;
 		double z2 = BlockLANWire.connects(w, x,y,z+1,meta) ? 1 : max;
 		
-		return AxisAlignedBB.getAABBPool().getAABB(x+x1, y+y1, z+z1, x+x2, y+y2, z+z2);
-		//return AxisAlignedBB.getAABBPool().getAABB(x1, y1, z1, x2, y2, z2);
+		return AxisAlignedBB.getBoundingBox(x+x1, y+y1, z+z1, x+x2, y+y2, z+z2);
 	}
 	
 	@Override

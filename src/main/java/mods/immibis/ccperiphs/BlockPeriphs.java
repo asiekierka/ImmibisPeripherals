@@ -38,7 +38,7 @@ public class BlockPeriphs extends BlockCombined {
 	@Override
 	public MovingObjectPosition collisionRayTrace(World w, int x, int y, int z, Vec3 src, Vec3 dst) {
 		List<AxisAlignedBB> list = new ArrayList<AxisAlignedBB>();
-		addCollisionBoxesToList(w, x, y, z, AxisAlignedBB.getAABBPool().getAABB(x, y, z, x+1, y+1, z+1), list, null);
+		addCollisionBoxesToList(w, x, y, z, AxisAlignedBB.getBoundingBox(x, y, z, x+1, y+1, z+1), list, null);
 		
 		MovingObjectPosition best = null;
 		double best_dist = 0;
