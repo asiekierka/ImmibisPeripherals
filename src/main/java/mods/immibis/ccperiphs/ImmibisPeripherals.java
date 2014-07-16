@@ -25,6 +25,7 @@ import mods.immibis.core.Config;
 import mods.immibis.core.api.APILocator;
 import mods.immibis.core.api.FMLModInfo;
 import mods.immibis.core.api.net.IPacket;
+import mods.immibis.core.api.net.IPacketMap;
 import mods.immibis.core.api.porting.PortableBaseMod;
 import mods.immibis.core.api.porting.SidedProxy;
 import mods.immibis.core.api.util.Colour;
@@ -53,14 +54,14 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@Mod(version = "58.0.0", name = "Immibis's Peripherals", modid = "ImmibisPeripherals", dependencies = "required-after:ImmibisCore;after:ComputerCraft")
+@Mod(version = "58.1.0", name = "Immibis's Peripherals", modid = "ImmibisPeripherals", dependencies = "required-after:ImmibisCore;after:ComputerCraft")
 @FMLModInfo(
 		url="http://www.minecraftforum.net/topic/1001131-110-immibiss-mods-smp/",
 		description="Adds some useful and neat peripherals",
 		credits="Code by immibis; card textures and ideas by ozbar11.",
 		authors="immibis"
 		)
-public class ImmibisPeripherals extends PortableBaseMod {
+public class ImmibisPeripherals extends PortableBaseMod implements IPacketMap {
 
 	public static BlockPeriphs block;
 	public static BlockLANWire lanWire;
@@ -68,6 +69,8 @@ public class ImmibisPeripherals extends PortableBaseMod {
 	public static ItemComponent itemComponent;
 	public static ImmibisPeripherals instance;
 	public static File scBaseDir;
+	
+	public static final String CHANNEL = "immibis.periphs";
 	
 	public static boolean enableCraftingAcceleratorComponents;
 
@@ -288,9 +291,10 @@ public class ImmibisPeripherals extends PortableBaseMod {
 		//scBaseDir = new File(mod_ComputerCraft.getBaseDir(), "mod-data/immibis-peripherals/smartcard");
 		//createFakeBaseDir();
 
-		APILocator.getNetManager().registerPacket(PacketSpeakerStart.class);
-		APILocator.getNetManager().registerPacket(PacketSpeakerStop.class);
-		APILocator.getNetManager().registerPacket(PacketSpeakerStream.class);
+		APILocator.getNetManager().listen(this);
+		//APILocator.getNetManager().registerPacket(PacketSpeakerStart.class);
+		//APILocator.getNetManager().registerPacket(PacketSpeakerStop.class);
+		//APILocator.getNetManager().registerPacket(PacketSpeakerStream.class);
 
 		enableClockTicks(false);
 	}
@@ -329,7 +333,6 @@ public class ImmibisPeripherals extends PortableBaseMod {
 		return true;
 	}
 
-	@SuppressWarnings("unused")
 	private void createFakeBaseDir() {
 		copyResourceToFileIfDoesntExist("/immibis/ccperiphs/smartcard/bios.lua", new File(scBaseDir, "mods/ComputerCraft/lua/bios.lua"));
 	}
@@ -365,5 +368,26 @@ public class ImmibisPeripherals extends PortableBaseMod {
 		} catch(IOException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	@Override
+	public String getChannel() {
+		return CHANNEL;
+	}
+
+	@Override
+	public IPacket createS2CPacket(byte id) {
+		if(id == PKT_SPEAKER_START)
+			return new PacketSpeakerStart();
+		if(id == PKT_SPEAKER_STOP)
+			return new PacketSpeakerStart();
+		if(id == PKT_SPEAKER_STREAM)
+			return new PacketSpeakerStart();
+		return null;
+	}
+
+	@Override
+	public IPacket createC2SPacket(byte id) {
+		return null;
 	}
 }

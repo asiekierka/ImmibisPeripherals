@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "58.0.0"
+version = "58.1.0"
 group= "mods.immibis.ccperiphs" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ImmibisPeripherals"
 
@@ -35,7 +35,7 @@ repositories {
 dependencies {
     compile "li.cil.oc:OpenComputers:MC1.7.2-1.2.3.92"
     compile 'junit:junit:4.11'
-    compile 'mods.immibis.core:ImmibisCore:58.0.3:deobf'
+    compile files("lib/immibis-core-58.1.3.jar")
 }
 
 minecraft {
