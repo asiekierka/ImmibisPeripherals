@@ -720,7 +720,7 @@ public class TileCoprocAdvMap extends TileCoprocBase {
 			{
 				// getPlayerByName(string username) -> player/nil
 				checkArgs(args, String.class);
-				EntityPlayer pl = MinecraftServer.getServer().getConfigurationManager().getPlayerForUsername((String)args[0]);
+				EntityPlayer pl = MinecraftServer.getServer().getConfigurationManager().func_152612_a((String)args[0]);
 				return new Object[] {new LuaEntityPlayer(pl)};
 			}
 			
